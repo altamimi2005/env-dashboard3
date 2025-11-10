@@ -6,4 +6,3 @@ folium==0.17.0
 streamlit-folium==0.21.1
 chardet==5.2.0
 openai==1.52.2
-
