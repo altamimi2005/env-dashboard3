@@ -554,3 +554,4 @@ User question: {q!r}
         if OPENAI_ENABLED and not used_openai:
             st.caption("AI call unavailable (package/keys/quota). Used local parser instead.")
         st.markdown(msg)
+
