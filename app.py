@@ -419,7 +419,8 @@ with tab_compare:
             st.info("Pick at least one station.")
         else:
             if layout2 == "Overlay":
-                sub = df_rs[(df_rs["station_name"].isin(sel_stations)) & (df_rs["parameter"] == c_param)].dropna(subset=["value"])()
+               sub = df_rs[(df_rs["station_name"].isin(sel_stations)) & (df_rs["parameter"] == c_param)].dropna(subset=["value"])
+
             else:
                 sub = None
             if layout2 == "Overlay":
@@ -431,7 +432,8 @@ with tab_compare:
                     st.plotly_chart(fig, use_container_width=True)
             else:
                 for s_id in sel_stations:
-                    sub2 = df_rs[(df_rs["station_name"] == s_id) & (df_rs["parameter"] == c_param)].dropna(subset=["value"])()
+                    sub2 = df_rs[(df_rs["station_name"] == s_id) & (df_rs["parameter"] == c_param)].dropna(subset=["value"])
+
                     if not sub2.empty:
                         fig = px.line(sub2, x="timestamp", y="value", title=f"{c_param} – {s_id}")
                         tidy_axes(fig, "Time", c_param)
@@ -504,5 +506,6 @@ with tab_ustats:
     d["day"] = pd.to_datetime(d["timestamp"]).dt.floor("D")
     daily = d.groupby(["station_name", "parameter", "day"], as_index=False)["value"].agg(["count", "mean", "max", "min"]).reset_index()
     st.dataframe(daily.head(500), use_container_width=True)
+
 
 
